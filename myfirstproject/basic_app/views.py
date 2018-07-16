@@ -3,7 +3,7 @@
 from .models import School
 from django.views.generic.list import ListView
 from django.shortcuts import render, get_object_or_404
-
+from django.views.generic.detail import DetailView
 
 class SchoolListView(ListView):
     model = School
@@ -20,7 +20,5 @@ class SchoolListView(ListView):
         return context
 
 
-def detail(request, id):
-    school = get_object_or_404(School, pk=id)
-
-    return render(request, 'basic_app/school_detail.html', {'school':school})
+class SchoolDetailView(DetailView):
+    model = School
