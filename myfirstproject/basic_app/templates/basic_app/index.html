@@ -23,7 +23,10 @@
           <p class="card-text">{{school.description}}</p>
         </div>
         <div class="card-footer text-muted">
-          {{school.location}}
+          <p>{{school.location}}</p>
+          <a class="btn btn-outline-secondary" href="{% url 'school_detail' school.pk %}">
+            Go to school's page
+          </a>
         </div>
       </div>
     </div>

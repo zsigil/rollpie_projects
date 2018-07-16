@@ -2,6 +2,8 @@
 
 from .models import School
 from django.views.generic.list import ListView
+from django.shortcuts import render, get_object_or_404
+
 
 class SchoolListView(ListView):
     model = School
@@ -16,3 +18,9 @@ class SchoolListView(ListView):
         context = super(SchoolListView, self).get_context_data()
         context['some_data'] = 'This is some other data'
         return context
+
+
+def detail(request, id):
+    school = get_object_or_404(School, pk=id)
+
+    return render(request, 'basic_app/school_detail.html', {'school':school})
